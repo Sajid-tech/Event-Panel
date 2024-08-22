@@ -36,18 +36,18 @@ const Admin = () => {
         // Check if the response has the expected structure
         if (response.data && response.data.registerData) {
           setRegisterations(response.data.registerData);
-          console.log("registerdata", registerations);
+          // console.log("registerdata", registerations);
         } else {
           console.error("Unexpected response structure:", response.data);
         }
-        console.log(registerations);
+        // console.log(registerations);
       } catch (error) {
         console.error("Error fetching registrations:", error);
       }
     };
     fetchRegistrations();
     setLoding(false);
-  }, []);
+  }, [1]);
 
   return (
     <Layout>

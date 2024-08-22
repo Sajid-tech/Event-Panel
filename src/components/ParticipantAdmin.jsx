@@ -33,18 +33,17 @@ const ParticipantAdmin = () => {
         // Check if the response has the expected structure
         if (response.data && response.data.registeridcard) {
           setParticipant(response.data.registeridcard);
-          console.log("participantsdata", response.data.registeridcard);
+          // console.log("participantsdata", response.data.registeridcard);
         } else {
           console.error("Unexpected response structure:", response.data);
         }
-        console.log("participate participants data", participant);
       } catch (error) {
         console.error("Error fetching participants:", error);
       }
     };
     fetchParticipants();
     setLoding(false);
-  }, []);
+  }, [1]);
 
   return (
     <Layout>

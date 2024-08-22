@@ -6,7 +6,7 @@ const Register = ({ registerations }) => {
   // Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
-  const itemsPerPage = 5;
+  const itemsPerPage = 6;
 
   // search function
   const searchRegister = registerations.filter((item) => {
@@ -103,7 +103,12 @@ const Register = ({ registerations }) => {
           <tbody className="bg-white divide-y divide-gray-200">
             {currentItems.length > 0 ? (
               currentItems.map((item, index) => (
-                <tr key={item.id}>
+                <tr
+                  key={item.id}
+                  className={`${
+                    item.fair_print_status === "Printed" ? "bg-green-100" : ""
+                  }`}
+                >
                   <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500">
                     {index + 1 + (currentPage - 1) * itemsPerPage}
                   </td>

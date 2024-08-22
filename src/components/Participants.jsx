@@ -3,11 +3,11 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { FaPrint } from "react-icons/fa";
 
 const Participants = ({ participant }) => {
-  console.log("particpants components ", participant);
+  // console.log("particpants components ", participant);
   // Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
-  const itemsPerPage = 5;
+  const itemsPerPage = 6;
 
   // Filter participants based on search query
   const searchParticipants = participant.filter((item) => {
@@ -79,7 +79,7 @@ const Participants = ({ participant }) => {
           <tbody className="bg-white divide-y divide-gray-200">
             {currentItems.length > 0 ? (
               currentItems.map((item, index) => (
-                <tr key={item.id}>
+                <tr key={index}>
                   <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500">
                     {index + 1 + (currentPage - 1) * itemsPerPage}
                   </td>
