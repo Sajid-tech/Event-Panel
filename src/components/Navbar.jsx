@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AiOutlineMenu, AiOutlineSearch, AiOutlineUser } from "react-icons/ai";
+import { AiOutlineMenu, AiOutlineUser } from "react-icons/ai";
 import { CgClose } from "react-icons/cg";
 import { CiViewList } from "react-icons/ci";
 import { IoPeopleOutline } from "react-icons/io5";
@@ -40,16 +40,9 @@ const Navbar = () => {
           <AiOutlineMenu className="h-5 w-5" />
         </button>
         <div className="w-full flex-1">
-          <form>
-            <div className="relative">
-              <AiOutlineSearch className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-600" />
-              <input
-                type="search"
-                placeholder="Search "
-                className="w-full pl-8 py-2 bg-white border border-gray-300 rounded-md shadow-sm"
-              />
-            </div>
-          </form>
+          <h1 className="flex items-center justify-center text-lg ">
+            EVENT PANEL
+          </h1>
         </div>
         <div className="relative">
           <button
@@ -86,7 +79,7 @@ const Navbar = () => {
               </Link>
             </div>
             <Link
-              to="#"
+              to="/admin"
               className=" w-full flex items-center gap-3 p-2 mb-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
               onClick={closeModal}
             >
@@ -94,7 +87,7 @@ const Navbar = () => {
               Registration List
             </Link>
             <Link
-              to="#"
+              to="/participants"
               className=" w-full flex items-center gap-3 p-2 bg-green-500 text-white rounded-md hover:bg-green-600"
               onClick={closeModal}
             >

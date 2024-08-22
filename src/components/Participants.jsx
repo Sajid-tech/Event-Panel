@@ -2,31 +2,29 @@ import React, { useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { FaPrint } from "react-icons/fa";
 
-const Register = ({ registerations }) => {
+const Participants = ({ participant }) => {
+  console.log("particpants components ", participant);
   // Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
   const itemsPerPage = 10;
 
-  // search function
-  const searchRegister = registerations.filter((item) => {
-    // item.fair_id.toString().includes(searchQuery)
-    //  using OR logic for multiple search
+  // Filter participants based on search query
+  const searchParticipants = participant.filter((item) => {
     const query = searchQuery.toLowerCase();
     return (
-      item.fair_id?.toString().toLowerCase().includes(query) ||
-      item.fair_firm_name?.toLowerCase().includes(query) ||
-      item.fair_person_name?.toLowerCase().includes(query) ||
-      item.fair_person_mobile?.toLowerCase().includes(query) ||
-      item.fair_categygroup?.toLowerCase().includes(query)
+      item.id_name_of_firm?.toLowerCase().includes(query) ||
+      item.id_card_brand_name?.toLowerCase().includes(query) ||
+      item.idcardsub_rep_name?.toLowerCase().includes(query) ||
+      item.idcardsub_rep_mobile?.toLowerCase().includes(query)
     );
   });
 
   // Calculate total number of pages
-  const totalPages = Math.ceil(searchRegister.length / itemsPerPage);
+  const totalPages = Math.ceil(searchParticipants.length / itemsPerPage);
 
   // Get current items
-  const currentItems = searchRegister.slice(
+  const currentItems = searchParticipants.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
@@ -36,37 +34,24 @@ const Register = ({ registerations }) => {
     setCurrentPage(pageNumber);
   };
 
-  // const handlePrint = (id) => {
-  //   console.log("print id", id);
-  //   const printUrl = `/admin/print/${id}`;
-  //   window.open(printUrl, "_blank");
-  // };
-
   return (
-    <div className="flex flex-col gap-4 ">
-      {/* search box  uper p-4   */}
-      <div className=" w-full ">
-        {/* <input  upper flex-1
-          type="text"
-          placeholder="Search by Fair Id"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="border border-gray-300 p-2 rounded"
-        /> */}
+    <div className="flex flex-col gap-4">
+      {/* Search box */}
+      <div className="w-full">
         <form>
           <div className="relative">
             <AiOutlineSearch className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-600" />
             <input
               type="search"
-              placeholder="Search by Firm Name, Fair ID, Person Name, Mobile No, Category  "
+              placeholder="Search by Firm Name, Brand Name, Person Name, Mobile No"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              // pl-8 niche
               className="w-full pl-10 py-2 bg-white border border-gray-300 rounded-md shadow-sm"
             />
           </div>
         </form>
       </div>
+
       <div className="overflow-x-auto">
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
@@ -75,25 +60,16 @@ const Register = ({ registerations }) => {
                 SL. No
               </th>
               <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Fair Id
+                Firm Name
               </th>
               <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Firm Name
+                Brand
               </th>
               <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Person Name
               </th>
               <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Mobile No.
-              </th>
-              <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Category Type
-              </th>
-              <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Profession
-              </th>
-              <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                No. of People
+                Mobile No
               </th>
               <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Action
@@ -108,25 +84,16 @@ const Register = ({ registerations }) => {
                     {index + 1 + (currentPage - 1) * itemsPerPage}
                   </td>
                   <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900">
-                    {item.fair_id}
+                    {item.id_name_of_firm}
                   </td>
                   <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900">
-                    {item.fair_firm_name}
+                    {item.id_card_brand_name}
                   </td>
                   <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900">
-                    {item.fair_person_name}
+                    {item.idcardsub_rep_name}
                   </td>
                   <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900">
-                    {item.fair_person_mobile}
-                  </td>
-                  <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900">
-                    {item.fair_categygroup}
-                  </td>
-                  <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900">
-                    {item.fair_profession || "N/A"}
-                  </td>
-                  <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900">
-                    {item.fair_no_of_people}
+                    {item.idcardsub_rep_mobile}
                   </td>
                   <td className="px-4 py-2 whitespace-nowrap text-sm">
                     <button className="text-blue-600 hover:text-blue-900">
@@ -137,7 +104,7 @@ const Register = ({ registerations }) => {
               ))
             ) : (
               <tr>
-                <td colSpan="9" className="px-4 py-2 text-center text-gray-500">
+                <td colSpan="6" className="px-4 py-2 text-center text-gray-500">
                   No data available
                 </td>
               </tr>
@@ -146,7 +113,7 @@ const Register = ({ registerations }) => {
         </table>
       </div>
 
-      {/* Pagination  */}
+      {/* Pagination */}
       <div className="flex justify-between mt-4">
         <button
           onClick={() => handlePageChange(Math.max(currentPage - 1, 1))}
@@ -172,4 +139,4 @@ const Register = ({ registerations }) => {
   );
 };
 
-export default Register;
+export default Participants;

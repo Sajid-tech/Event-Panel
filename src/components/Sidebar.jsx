@@ -21,14 +21,14 @@ const Sidebar = () => {
         <div className="flex-1">
           <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
             <Link
-              to="#"
+              to="/admin"
               className="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-600 hover:text-gray-900"
             >
               <CiViewList className="h-5 w-5" />
               Registration List
             </Link>
             <Link
-              to="#"
+              to="/participants"
               className="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-600 hover:text-gray-900"
             >
               <IoPeopleOutline className="h-5 w-5" />
