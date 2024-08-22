@@ -1,6 +1,7 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import BASE_URL from "../config/baseUrl";
 
 export const Context = createContext()
 
@@ -18,7 +19,7 @@ const AppProvider = ({ children }) => {
     const checkPanelStatus = async () => {
         try {
             const response = await axios.get(
-                "https://southindiagarmentsassociation.com/api/panel-check-status"
+                `${BASE_URL}/api/panel-check-status`
             );
             const datas = await response.data
             // console.log("data maintence", datas)
@@ -50,10 +51,10 @@ const AppProvider = ({ children }) => {
             navigate('/maintenance');
         } else if (isPanelUp?.success) {
             if (token) {
-                if (currentPath === '/participants' || currentPath === '/admin') {
+                if (currentPath === '/participants' || currentPath === '/admin' || currentPath === '/dashboard') {
                     navigate(currentPath)
                 } else {
-                    navigate('/admin')
+                    navigate('/dashboard')
                 }
             } else {
                 if (currentPath === '/') {

@@ -4,6 +4,7 @@ import { Context } from "../context/Context";
 import { useNavigate } from "react-router-dom";
 import Participants from "./Participants";
 import Layout from "../Layout/Layout";
+import BASE_URL from "../config/baseUrl";
 
 //sajid-particpants
 const ParticipantAdmin = () => {
@@ -23,14 +24,11 @@ const ParticipantAdmin = () => {
 
         setLoding(true);
 
-        const response = await axios.get(
-          "https://southindiagarmentsassociation.com/api/panel-fetch-idcard",
-          {
-            headers: {
-              Authorization: `Bearer ${process.env.REACT_APP_BEARER_TOKEN}`,
-            },
-          }
-        );
+        const response = await axios.get(`${BASE_URL}/api/panel-fetch-idcard`, {
+          headers: {
+            Authorization: `Bearer ${process.env.REACT_APP_BEARER_TOKEN}`,
+          },
+        });
         // Check if the response has the expected structure
         if (response.data && response.data.registeridcard) {
           setParticipant(response.data.registeridcard);

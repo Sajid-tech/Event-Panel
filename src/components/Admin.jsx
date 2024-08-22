@@ -4,6 +4,7 @@ import axios from "axios";
 import { Context } from "../context/Context";
 import { useNavigate } from "react-router-dom";
 import Layout from "../Layout/Layout";
+import BASE_URL from "../config/baseUrl";
 
 //sajid
 const Admin = () => {
@@ -24,7 +25,7 @@ const Admin = () => {
         setLoding(true);
 
         const response = await axios.get(
-          process.env.REACT_APP_REGISTER_API_URL,
+          `${BASE_URL}/api/panel-fetch-register`,
           {
             headers: {
               Authorization: `Bearer ${process.env.REACT_APP_BEARER_TOKEN}`,

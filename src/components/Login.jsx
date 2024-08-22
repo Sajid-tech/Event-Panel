@@ -40,7 +40,7 @@ const Login = () => {
         if (token) {
           // Store the token in localStorage
           localStorage.setItem("token", token);
-          navigate("/admin");
+          navigate("/dashboard");
         } else {
           toast.error("Login Failed, Token not received.");
         }

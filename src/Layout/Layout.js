@@ -1,6 +1,7 @@
 import React from 'react';
 import Sidebar from '../components/Sidebar';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 const Layout = ({ children }) => {
     return (
@@ -17,6 +18,7 @@ const Layout = ({ children }) => {
                 <div className="flex-1 overflow-auto p-4 sm:p-6">
                     {children}
                 </div>
+                <Footer className="h-16 w-full flex-shrink-0" />
             </div>
         </div>
     );
