@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import { Context } from "../context/Context";
 import axios from "axios";
+import BASE_URL from "../config/baseUrl";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -30,10 +31,7 @@ const Login = () => {
 
     try {
       // Send POST request to login API with form data
-      const res = await axios.post(
-        "https://southindiagarmentsassociation.com/api/panel-login",
-        formData
-      );
+      const res = await axios.post(`${BASE_URL}/api/panel-login`, formData);
 
       if (res.status === 200 && res.data?.msg === "success.") {
         const token = res.data.UserInfo?.token;

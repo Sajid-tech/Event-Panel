@@ -11,13 +11,14 @@ const Layout = ({ children }) => {
 
             {/* Main content area */}
             <div className="flex flex-col flex-1 overflow-hidden">
-                {/* Navbar takes full width */}
+                {/* Navbar  */}
                 <Navbar className="h-16 w-full flex-shrink-0" />
 
                 {/* Content area */}
                 <div className="flex-1 overflow-auto p-4 sm:p-6">
                     {children}
                 </div>
+                {/* Footer area  */}
                 <Footer className="h-16 w-full flex-shrink-0" />
             </div>
         </div>

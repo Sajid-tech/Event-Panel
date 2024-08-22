@@ -6,7 +6,7 @@ const Register = ({ registerations }) => {
   // Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
-  const itemsPerPage = 10;
+  const itemsPerPage = 5;
 
   // search function
   const searchRegister = registerations.filter((item) => {
@@ -43,7 +43,7 @@ const Register = ({ registerations }) => {
   // };
 
   return (
-    <div className="flex flex-col gap-4 ">
+    <div className="flex flex-col gap-4 h-full ">
       {/* search box  uper p-4   */}
       <div className=" w-full ">
         {/* <input  upper flex-1
@@ -67,7 +67,7 @@ const Register = ({ registerations }) => {
           </div>
         </form>
       </div>
-      <div className="overflow-x-auto">
+      <div className=" overflow-auto">
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
             <tr>

@@ -19,7 +19,6 @@ const App = () => {
         <AppProvider>
           <Routes>
             <Route path="/" element={<Login />} />
-
             <Route path="/dashboard" element={<ProtectedRoute element={<Dashboard />} />} />
             <Route path="/participants" element={<ProtectedRoute element={<ParticipantAdmin />} />} />
             <Route path="/admin" element={<ProtectedRoute element={<Admin />} />} />

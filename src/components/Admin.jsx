@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect, useState } from "react";
 import Register from "./Register";
 import axios from "axios";
@@ -50,16 +51,20 @@ const Admin = () => {
 
   return (
     <Layout>
-      <main className="flex flex-1 flex-col gap-4 p-4 md:p-6 lg:p-8 xl:p-10 max-w-7xl mx-auto w-full">
+      <main className="flex flex-1 flex-col gap-4 p-4 md:p-6 lg:p-8 xl:p-10 max-w-7xl mx-auto w-full overflow-hidden">
         <div className="flex items-center justify-between">
           <h1 className="text-lg font-semibold md:text-2xl">
             Registration List
           </h1>
         </div>
-        <div>
-          {/* <div className="flex flex-col items-center gap-1 text-center"></div> */}
-
-          <Register registerations={registerations} />
+        <div className="flex-1 overflow-auto">
+          {loading ? (
+            <div className="flex justify-center items-center h-full text-gray-500">
+              Loading...
+            </div>
+          ) : (
+            <Register registerations={registerations} />
+          )}
         </div>
       </main>
     </Layout>

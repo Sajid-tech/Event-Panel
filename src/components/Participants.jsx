@@ -7,7 +7,7 @@ const Participants = ({ participant }) => {
   // Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
-  const itemsPerPage = 10;
+  const itemsPerPage = 5;
 
   // Filter participants based on search query
   const searchParticipants = participant.filter((item) => {

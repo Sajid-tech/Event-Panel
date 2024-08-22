@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Context } from "../context/Context";
@@ -55,8 +56,13 @@ const ParticipantAdmin = () => {
         </div>
         <div>
           {/* <div className="flex flex-col items-center gap-1 text-center"></div> */}
-
-          <Participants participant={participant} />
+          {loading ? (
+            <div className="flex justify-center items-center h-full text-gray-500">
+              Loading...
+            </div>
+          ) : (
+            <Participants participant={participant} />
+          )}
         </div>
       </main>
     </Layout>

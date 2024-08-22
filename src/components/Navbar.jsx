@@ -1,8 +1,13 @@
 import React, { useState } from "react";
-import { AiOutlineMenu, AiOutlineUser } from "react-icons/ai";
+import { AiOutlineMenu } from "react-icons/ai";
 import { CgClose } from "react-icons/cg";
 import { CiViewList } from "react-icons/ci";
-import { IoPeopleOutline } from "react-icons/io5";
+import { IoIosClose } from "react-icons/io";
+import {
+  IoChevronDownOutline,
+  IoPeopleOutline,
+  IoPersonOutline,
+} from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
@@ -49,16 +54,27 @@ const Navbar = () => {
             onClick={toogleDropDown}
             className="h-8 w-8 text-gray-600 hover:text-gray-900"
           >
-            <AiOutlineUser className="h-5 w-5" />
+            <div className="flex ">
+              <IoPersonOutline className="h-6 w-6" />
+              <IoChevronDownOutline className="mt-1" />
+            </div>
           </button>
           {isToogle && (
-            <div>
+            <div className="absolute right-0 mt-2 w-24 bg-white border border-gray-300 rounded-md shadow-lg">
               <button
-                className="absolute right-0 p-2 mt-2 w-24 bg-white border border-gray-300 rounded-md shadow-lg"
+                className="w-full text-left p-2 hover:bg-gray-100"
                 onClick={handleLogout}
               >
                 Logout
               </button>
+              <button
+                onClick={() => setIsToogle(false)}
+                className="flex w-full justify-between items-end p-2 hover:bg-red-300"
+              >
+                <span>Close</span>
+                <IoIosClose className="h-6 w-6 " />
+              </button>
+              <hr />
             </div>
           )}
         </div>
@@ -68,11 +84,11 @@ const Navbar = () => {
       {isModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-50">
           <div className="bg-white p-6 rounded-md shadow-lg w-80">
-            <div className=" flex justify-between">
+            <div className="flex justify-between">
               <h2 className="text-lg font-bold mb-4">Menu</h2>
               <Link
                 to="#"
-                className=" relative top-2 right-2  text-red-600 "
+                className="relative top-2 right-2 text-red-600"
                 onClick={closeModal}
               >
                 <CgClose className="h-5 w-5" />
@@ -80,7 +96,7 @@ const Navbar = () => {
             </div>
             <Link
               to="/admin"
-              className=" w-full flex items-center gap-3 p-2 mb-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+              className="w-full flex items-center gap-3 p-2 mb-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
               onClick={closeModal}
             >
               <CiViewList className="h-5 w-5" />
@@ -88,7 +104,7 @@ const Navbar = () => {
             </Link>
             <Link
               to="/participants"
-              className=" w-full flex items-center gap-3 p-2 bg-green-500 text-white rounded-md hover:bg-green-600"
+              className="w-full flex items-center gap-3 p-2 bg-green-500 text-white rounded-md hover:bg-green-600"
               onClick={closeModal}
             >
               <IoPeopleOutline className="h-5 w-5" />
