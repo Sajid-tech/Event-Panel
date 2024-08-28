@@ -36,23 +36,10 @@ const Register = ({ registerations }) => {
     setCurrentPage(pageNumber);
   };
 
-  // const handlePrint = (id) => {
-  //   console.log("print id", id);
-  //   const printUrl = `/admin/print/${id}`;
-  //   window.open(printUrl, "_blank");
-  // };
-
   return (
     <div className="flex flex-col gap-4 h-full ">
       {/* search box  uper p-4   */}
       <div className=" w-full ">
-        {/* <input  upper flex-1
-          type="text"
-          placeholder="Search by Fair Id"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="border border-gray-300 p-2 rounded"
-        /> */}
         <form>
           <div className="relative">
             <AiOutlineSearch className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-600" />
